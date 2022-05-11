@@ -20,7 +20,7 @@ const Modal = () => {
   const [editTitle, setEditTitle] = useState("");
   const dispatch = useDispatch();
 
-  const handlClickOutside = () => {
+  const handleClickOutside = () => {
     dispatch(closeModal());
   };
 
@@ -30,7 +30,7 @@ const Modal = () => {
 
   const submitChanges = () => {
     dispatch(edit({ id, title: editTitle }));
-    handlClickOutside();
+    handleClickOutside();
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Modal = () => {
   }, [item]);
 
   return (
-    <Dialog open={isOpen} onClose={handlClickOutside}>
+    <Dialog open={isOpen} onClose={handleClickOutside}>
       <DialogTitle>Edit</DialogTitle>
       <DialogContent
         sx={{
@@ -58,7 +58,7 @@ const Modal = () => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handlClickOutside}>Cancel</Button>
+        <Button onClick={handleClickOutside}>Cancel</Button>
         <Button onClick={submitChanges}>Edit</Button>
       </DialogActions>
     </Dialog>
