@@ -55,6 +55,12 @@ const Modal = () => {
           variant="standard"
           value={editTitle}
           onChange={changeTitle}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              submitChanges();
+            }
+          }}
         />
       </DialogContent>
       <DialogActions>
