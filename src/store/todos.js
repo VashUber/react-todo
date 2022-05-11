@@ -20,8 +20,12 @@ export const todosSlice = createSlice({
       const todo = state.todos.find((elem) => elem.id === action.payload.id);
       todo.done = !todo.done;
     },
+    edit: (state, action) => {
+      const todo = state.todos.find((elem) => elem.id === action.payload.id);
+      todo.title = action.payload.title;
+    },
   },
 });
 
-export const { add, done, remove, setTodos } = todosSlice.actions;
+export const { add, done, remove, edit } = todosSlice.actions;
 export default todosSlice.reducer;
