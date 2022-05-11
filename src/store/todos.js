@@ -25,7 +25,7 @@ export const todosSlice = createSlice({
       todo.title = action.payload.title;
     },
     setTodos: (state) => {
-      state.todos = JSON.parse(localStorage.getItem("todos"));
+      state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
   },
 });
