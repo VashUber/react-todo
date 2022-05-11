@@ -1,11 +1,22 @@
 import { Stack, Collapse } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
+import { useDispatch } from "react-redux";
+import { setTodos } from "../store/todos";
 import Card from "./Card";
 
 const Cards = () => {
+  const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todos);
+
+  useEffect(() => {
+    dispatch(setTodos());
+  }, []);
+
+  window.onunload = () => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  };
 
   return (
     <TransitionGroup component={Stack}>

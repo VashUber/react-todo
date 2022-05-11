@@ -24,8 +24,11 @@ export const todosSlice = createSlice({
       const todo = state.todos.find((elem) => elem.id === action.payload.id);
       todo.title = action.payload.title;
     },
+    setTodos: (state) => {
+      state.todos = JSON.parse(localStorage.getItem("todos"));
+    },
   },
 });
 
-export const { add, done, remove, edit } = todosSlice.actions;
+export const { add, done, remove, edit, setTodos } = todosSlice.actions;
 export default todosSlice.reducer;
