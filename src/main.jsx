@@ -10,6 +10,10 @@ import App from "./App";
 import store from "./store";
 import CssBaseline from "@mui/material/CssBaseline";
 
+store.subscribe(() => {
+  localStorage.setItem("todos", JSON.stringify(store.getState().todos.todos));
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <CssBaseline>

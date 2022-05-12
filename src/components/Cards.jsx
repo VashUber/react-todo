@@ -19,10 +19,6 @@ const Cards = () => {
     dispatch(setTodos());
   }, []);
 
-  window.onunload = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  };
-
   return (
     <TransitionGroup component={Stack}>
       {todos.map((elem) => (
