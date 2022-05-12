@@ -8,7 +8,7 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const addTodo = () => {
-    if (input) {
+    if (input.trim()) {
       dispatch(add({ title: input }));
       setInput("");
     }
