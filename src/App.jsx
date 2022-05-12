@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import Cards from "./components/Cards";
 import Form from "./components/Form";
 import Modal from "./components/Modal";
@@ -9,7 +9,7 @@ import { grey } from "@mui/material/colors";
 
 function App() {
   return (
-    <>
+    <Stack minHeight="100vh">
       <Header>
         <Search />
       </Header>
@@ -18,7 +18,7 @@ function App() {
         sx={{
           padding: "20px 30px",
           bgcolor: grey[100],
-          minHeight: "100vh",
+          flexGrow: 1,
         }}
       >
         <Container>
@@ -29,7 +29,7 @@ function App() {
       </Box>
 
       <Modal />
-    </>
+    </Stack>
   );
 }
 
