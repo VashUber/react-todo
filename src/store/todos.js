@@ -11,7 +11,11 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      const todo = { id: uniqid(), title: action.payload.title, done: false };
+      const todo = {
+        id: uniqid(),
+        title: action.payload.title.trim(),
+        done: false,
+      };
       state.todos = [...state.todos, todo];
     },
     remove: (state, action) => {
@@ -29,7 +33,7 @@ export const todosSlice = createSlice({
       state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
     setSearch: (state, action) => {
-      state.search = action.payload.toLowerCase();
+      state.search = action.payload.toLowerCase().trim();
     },
   },
 });
