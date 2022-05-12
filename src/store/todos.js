@@ -3,6 +3,7 @@ import uniqid from "uniqid";
 
 const initialState = {
   todos: [],
+  search: "",
 };
 
 export const todosSlice = createSlice({
@@ -27,8 +28,12 @@ export const todosSlice = createSlice({
     setTodos: (state) => {
       state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
+    setSearch: (state, action) => {
+      state.search = action.payload.toLowerCase();
+    },
   },
 });
 
-export const { add, done, remove, edit, setTodos } = todosSlice.actions;
+export const { add, done, remove, edit, setTodos, setSearch } =
+  todosSlice.actions;
 export default todosSlice.reducer;

@@ -8,7 +8,12 @@ import Card from "./Card";
 
 const Cards = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos.todos);
+  const search = useSelector((state) => state.todos.search);
+  const todos = useSelector((state) =>
+    state.todos.todos.filter((elem) =>
+      elem.title.toLowerCase().includes(search)
+    )
+  );
 
   useEffect(() => {
     dispatch(setTodos());

@@ -7,8 +7,8 @@ const Form = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
-  const addTodo = (e) => {
-    if ((e.key === "Enter" || !e.key) && input) {
+  const addTodo = () => {
+    if (input) {
       dispatch(add({ title: input }));
       setInput("");
     }
@@ -19,7 +19,9 @@ const Form = () => {
       <Input
         value={input}
         onInput={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => addTodo(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") addTodo();
+        }}
         color="info"
       />
       <Button variant="contained" color="info" onClick={addTodo}>
